@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/.venv/Scripts/python.exe\" -c \"import torch; print\\(''CUDA:'', torch.cuda.is_available\\(\\)\\); print\\(''Device:'', torch.cuda.get_device_name\\(0\\) if torch.cuda.is_available\\(\\) else ''N/A''\\)\")",
+      "Bash(ls \"E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/models/text_encoders/\"*.safetensors)",
+      "Bash(\"E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/.venv/Scripts/python.exe\" -c \"import httpx; import fastapi; import uvicorn; print\\(''httpx:'', httpx.__version__\\); print\\(''fastapi:'', fastapi.__version__\\); print\\(''uvicorn:'', uvicorn.__version__\\)\")",
+      "Bash(\"E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/.venv/Scripts/python.exe\" -c \"import gguf; print\\(''gguf OK''\\)\")",
+      "Bash(find 'E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/custom_nodes/ComfyUI-LTXVideo' -type f -name *.py)",
+      "Bash(find 'E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/custom_nodes/ComfyUI-LTXVideo/example_workflows' -type f -name *.json)",
+      "Bash(grep -n \"separate_audio_and_video_latents\\\\|recombine_audio_and_video_latents\" \"E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/custom_nodes/ComfyUI-LTXVideo/\"*.py)",
+      "Bash(find 'E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI' -name *.py -exec grep -l \"LTXVAudioVAEDecode\\\\|LTXVSeparateAVLatent\" {})",
+      "Bash(2)",
+      "Bash(xxd)",
+      "Bash(\"E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/.venv/Scripts/python.exe\" -c \":*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8188/system_stats)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/health)",
+      "Bash(.venv/Scripts/python.exe -c \":*)",
+      "Bash(ls -la \"E:/ONTOLOGIE/Creative Technology/LTX/ComfyUI/models/checkpoints/\"*.safetensors)",
+      "WebSearch",
+      "Bash(ls \"E:/ONTOLOGIE/Creative Technology/LTX/\"*.md)",
+      "Bash(ls \"E:/ONTOLOGIE/Creative Technology/LTX/\"*.bat)",
+      "Bash(ls \"E:/ONTOLOGIE/Creative Technology/LTX/\"*.py)",
+      "Bash(ls \"E:/ONTOLOGIE/Creative Technology/LTX/\"*.json)",
+      "Bash(ls \"E:/ONTOLOGIE/Creative Technology/LTX/\"*.html)",
+      "Bash(ComfyUI/.venv/Scripts/python.exe -c \"from scripts.download_models import MODELS; print\\(f'OK: {len\\(MODELS\\)} models configured'\\)\")",
+      "Bash(ls diffusion_models/*.gguf)"
+    ]
+  }
+}
