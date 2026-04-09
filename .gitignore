@@ -1,0 +1,30 @@
+# ── ComfyUI (installed by install.bat) ───────────────────
+ComfyUI/
+!ComfyUI/.gitkeep
+
+# ── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# ── HuggingFace cache ───────────────────────────────────
+hf_cache/
+
+# ── LTX-2 source repo ───────────────────────────────────
+LTX-2/
+
+# ── Generated outputs ───────────────────────────────────
+app/outputs/
+*.mp4
+*.webm
+
+# ── OS files ─────────────────────────────────────────────
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ── IDE ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
