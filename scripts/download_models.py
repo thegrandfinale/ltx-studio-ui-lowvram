@@ -1,8 +1,8 @@
 """
-Download all models required by LTX Studio T2V workflow.
+Download all models required by LTX Studio (T2V + T2I workflows).
 Run this after install.bat has set up ComfyUI.
 
-Models are downloaded from HuggingFace Hub (~20 GB total).
+Models are downloaded from HuggingFace Hub (~28 GB total).
 Some repos are gated — run `huggingface-cli login` first if needed.
 """
 import os
@@ -30,6 +30,8 @@ if not COMFYUI_DIR.exists():
 # ── Model definitions ────────────────────────────────────────────────────────
 # Each entry: (repo_id, filename_in_repo, local_subdir, local_filename)
 MODELS = [
+    # ━━━ LTX-2.3 Text-to-Video ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
     # GGUF transformer — distilled 22B quantized Q4_K_M (~15 GB)
     (
         "unsloth/LTX-2.3-GGUF",
@@ -71,6 +73,66 @@ MODELS = [
         "ltx-2.3-spatial-upscaler-x2-1.1.safetensors",
         "latent_upscale_models",
         "ltx-2.3-spatial-upscaler-x2-1.1.safetensors",
+    ),
+
+    # ━━━ Flux.2 Klein 4B Text-to-Image ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    # Flux Klein 4B GGUF Q4_K_M (~2.6 GB)
+    (
+        "unsloth/FLUX.2-klein-4B-GGUF",
+        "flux-2-klein-4b-Q4_K_M.gguf",
+        "diffusion_models",
+        "flux-2-klein-4b-Q4_K_M.gguf",
+    ),
+    # Qwen3-4B text encoder for Klein 4B (~8 GB)
+    (
+        "Comfy-Org/vae-text-encorder-for-flux-klein-4b",
+        "split_files/text_encoders/qwen_3_4b.safetensors",
+        "clip",
+        "qwen_3_4b.safetensors",
+    ),
+    # ━━━ Flux.2 Klein 9B Text-to-Image (HQ mode) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    # Flux Klein 9B GGUF Q4_K_M (~5.3 GB)
+    (
+        "unsloth/FLUX.2-klein-9B-GGUF",
+        "flux-2-klein-9b-Q4_K_M.gguf",
+        "diffusion_models",
+        "flux-2-klein-9b-Q4_K_M.gguf",
+    ),
+    # Qwen3-8B FP4 text encoder for Klein 9B (~6.8 GB)
+    (
+        "Comfy-Org/vae-text-encorder-for-flux-klein-9b",
+        "split_files/text_encoders/qwen_3_8b_fp4mixed.safetensors",
+        "clip",
+        "qwen_3_8b_fp4mixed.safetensors",
+    ),
+
+    # ━━━ Shared: Flux2 VAE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    # Flux2 VAE (~320 MB) — shared by Klein 4B and 9B
+    (
+        "Comfy-Org/vae-text-encorder-for-flux-klein-4b",
+        "split_files/vae/flux2-vae.safetensors",
+        "vae",
+        "flux2-vae.safetensors",
+    ),
+
+    # ━━━ Flux Redux — Multi-Reference Style Conditioning ━━━━━━━━━━━━━━━━━━━━
+
+    # Flux Redux style model (~320 MB)
+    (
+        "black-forest-labs/FLUX.1-Redux-dev",
+        "flux1-redux-dev.safetensors",
+        "style_models",
+        "flux1-redux-dev.safetensors",
+    ),
+    # SigCLIP Vision encoder (~360 MB)
+    (
+        "Comfy-Org/sigclip_vision_384",
+        "sigclip_vision_patch14_384.safetensors",
+        "clip_vision",
+        "sigclip_vision_patch14_384.safetensors",
     ),
 ]
 
@@ -123,7 +185,7 @@ def download_all():
 if __name__ == "__main__":
     print("=" * 60)
     print("  LTX Studio — Model Downloader")
-    print("  ~20 GB total, this may take a while")
+    print("  LTX-2.3 T2V + Flux Klein T2I (~28 GB total)")
     print("=" * 60)
     print()
     download_all()
